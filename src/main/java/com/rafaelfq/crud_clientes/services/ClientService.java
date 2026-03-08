@@ -49,14 +49,14 @@ public class ClientService {
             entity = repository.save(entity);
             return new ClientDTO(entity);
         } catch (EntityNotFoundException e){
-            throw new ResourceNotFoundException("Cliente não encontrado");
+            throw new ResourceNotFoundException("Cliente Inexistente");
         }
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Cliente não encontrado");
+            throw new ResourceNotFoundException("Cliente Inexistente");
         }
         try {
             repository.deleteById(id);
